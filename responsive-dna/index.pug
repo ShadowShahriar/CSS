@@ -1,0 +1,16 @@
+- var n = 0;
+- var iteration = 24;
+
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title PUG/SCSS | DNA Loader 🧬
+		link(rel="stylesheet", href="styles.css")
+	body
+		.wrapper
+			.dna
+				while n < iteration
+					div(style="--i: "+n)= n++
