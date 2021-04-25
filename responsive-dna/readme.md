@@ -4,7 +4,7 @@ As the title suggests, this is an animated illustration of the DNA helix loop ma
 
 The infinite double-helix loop is created by adding a slight delay on every div element in the DNA container. The deoxyribose sugar is painted in white as two circles. Also, nitrogenous bases are shown as colored lines that join the sugar circles.
 
-<p align="center"> <img src="./preview.webp" alt="CSS DNA helix loop"/> </p>
+<p align="center"> <img src="./preview.webp" alt="CSS DNA helix loop" height="400px"/> </p>
 
 It is not a standard replication of actual DNA. It's a minimal instance of DNA made with HTML (pug) and CSS. Didn't bother about responsiveness as viewport units already nailed it!
 
