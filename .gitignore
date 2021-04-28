@@ -1,3 +1,8 @@
+# NPM Packages
 /node_modules
+
+# FFMPEG binary files
 /ffmpeg_bin
+
+# Deprecated experiments and log files
 /bloat
