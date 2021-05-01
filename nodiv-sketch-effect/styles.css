@@ -1,0 +1,80 @@
+:root{
+	/* Source image by Luca Bravo on Unsplash */
+	--source-image: url("./luca-bravo-VowIFDxogG4-unsplash.webp");
+	--image-width: calc(700 * var(--upx));
+	--image-height: calc(880 * var(--upx));
+	--image-horizontal-spacing: calc(256 * var(--upx));
+
+	/* to make it responsive */
+	--unit: 1vmax;
+	--zoom: 68;
+	--workspace-min: 1366; /* device screen width = 1366px */
+	--upx: calc(var(--zoom) * (var(--unit) / var(--workspace-min))); /* upx = units per pixel */
+
+	/* both axis displacement factor */
+	--displacement: 1px; /* 0.5px for really thin lines */
+}
+
+/* to make things look pretty */
+html, body{
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	scrollbar-width: thin;
+}
+
+/* to setup the ambient */
+html{
+	background-image: radial-gradient(circle at 50% 50%, #fff, #f8f8f8);
+	background-size: 100vw 100vh;
+	background-repeat: no-repeat;
+}
+
+/* the secret sauce */
+body{
+	filter: invert(1) grayscale(1);
+	background-color: transparent;
+}
+
+html::after, body::before, body::after{
+	content: "";
+	position: absolute;
+	right: var(--image-horizontal-spacing);
+	top: 50%;
+	width: var(--image-width);
+	height: var(--image-height);
+	background-color: #fff;
+	background-image: var(--source-image);
+	background-size: cover;
+	background-position: center;
+	display: block;
+	border-radius: calc(6 * var(--upx));
+	box-shadow: 0 calc(10 * var(--upx)) calc(32 * var(--upx)) 0 rgba(255,255,255,.1);
+}
+
+body::before{
+	transform: translate(
+		var(--displacement, 0),
+		calc(-50% + var(--displacement, 0))
+	);
+}
+
+body::after{
+	mix-blend-mode: difference;
+	transform: translate(
+		calc(var(--displacement, 0) * -1), 
+		calc(-50% + var(--displacement, 0) * -1)
+	);
+}
+
+/* show the main image on left-size */
+html::after{
+	left: var(--image-horizontal-spacing);
+	transform: translateY(-50%);
+	box-shadow: 0 calc(10 * var(--upx)) calc(32 * var(--upx)) 0 rgba(0,0,0,.2);
+}
