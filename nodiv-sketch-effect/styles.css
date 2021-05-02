@@ -78,3 +78,8 @@ html::after{
 	transform: translateY(-50%);
 	box-shadow: 0 calc(10 * var(--upx)) calc(32 * var(--upx)) 0 rgba(0,0,0,.2);
 }
+
+/* place the main image behind the sketch effect (for mobile devices) */
+html::after{
+	z-index: -1;
+}
