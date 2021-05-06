@@ -1,6 +1,9 @@
 # NPM Packages
 /node_modules
 
+# VSCode
+/.vscode
+
 # FFMPEG binary files
 /ffmpeg_bin
 
