@@ -1,0 +1,150 @@
+/* cubiod is the most basic shape to start a CSS-3D art
+ * we should be able to place 3D object over, inside, 
+ * infront, behind or beside it.
+ */
+
+/* cuboid defaults */
+.cuboid{
+	/* dimensions */
+	--width: calc(196 * var(--upx));
+	--length: calc(196 * var(--upx));
+	--height: calc(196 * var(--upx));
+
+	/* borders */
+	--side-borders: 0; /* 3px */
+	--side-borders-common: 0; /* 2px */
+	--border-color: transparent;
+
+	/* colors */
+	--color-floor: #666;
+	--color-floorside-A: #777;
+	--color-floorside-B: #888;
+
+	--color-ceil:#BBB;
+	--color-ceilside-A:#AAA;
+	--color-ceilside-B:#999;
+
+	/* texture */
+	--noise-background: none;
+
+	/* position */
+	--trnsX: -50%;
+	--trnsY: -50%;
+	--trnsZ: 0;
+	--trnsOriginX: 50%;
+	--trnsOriginY: 50%;
+
+	/* rotation */
+	--rotateX: 0deg;
+	--rotateY: 0deg;
+	--rotateZ: 0deg;
+}
+
+/* build the cuboid */
+.cuboid{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: var(--width);
+	height: var(--length);
+	background-color: var(--color-floor);
+	transform: 
+		translate3d(var(--trnsX), var(--trnsY), var(--trnsZ)) 
+		rotateX(var(--rotateY)) 
+		rotateY(var(--rotateX)) 
+		rotateZ(var(--rotateZ));
+	transform-origin: var(--trnsOriginX) var(--trnsOriginY);
+	box-sizing: border-box;
+}
+
+/* add ceiling */
+.cuboid .ceiling{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: var(--width);
+	height: var(--length);
+	background-color: var(--color-ceil);
+	transform: translate3d(-50%, -50%, var(--height));
+	box-sizing: border-box;
+}
+
+/* add walls on both sides relative to the floor */
+.cuboid::before, 
+.cuboid::after{
+	content: "";
+	position: absolute;
+	left: 0;
+	width: var(--width);
+	height: var(--height);
+	display: block;
+}
+
+.cuboid::before{
+	top: 0;
+	background-color: var(--color-floorside-A);
+	transform: rotateX(-90deg) translateY(-100%);
+	transform-origin: 0 0;
+}
+
+.cuboid::after{
+	bottom: 0;
+	background-color: var(--color-floorside-B);	
+	transform: rotateX(-90deg);
+	transform-origin: 0 100%;
+}
+
+/* add walls on both sides relative to the ceil */
+.cuboid .ceiling::before, 
+.cuboid .ceiling::after{
+	content: "";
+	position: absolute;
+	top: 0;
+	width: var(--height);
+	height: var(--length);
+	display: block;
+}
+
+.cuboid .ceiling::before{
+	left: 0;
+	background-color: var(--color-ceilside-A);
+	transform: rotateY(-90deg) translateX(-100%);
+	transform-origin: 0 0;
+}
+
+.cuboid .ceiling::after{
+	right: 0;
+	background-color: var(--color-ceilside-B);
+	transform: rotateY(-90deg);
+	transform-origin: 100% 0;
+}
+
+/* add background to cuboid when specified */
+.cuboid[data-background], 
+.cuboid[data-background]::before, 
+.cuboid[data-background]::after, 
+.cuboid[data-background] .ceiling::before, 
+.cuboid[data-background] .ceiling::after, 
+.cuboid[data-background] .ceiling{
+	background-image: var(--noise-background);
+}
+
+/* add border to cuboid when specified */
+.cuboid[data-border]::before, 
+.cuboid[data-border]::after{
+	border-width: var(--side-borders) var(--side-borders-common);
+}
+
+.cuboid[data-border] .ceiling::before, 
+.cuboid[data-border] .ceiling::after{
+	border-width: var(--side-borders-common) var(--side-borders);
+}
+
+.cuboid[data-border]::before, 
+.cuboid[data-border]::after, 
+.cuboid[data-border] .ceiling::before, 
+.cuboid[data-border] .ceiling::after{
+	border-color: var(--border-color);
+	border-style: solid;
+	box-sizing: border-box;
+}
