@@ -24,7 +24,9 @@ html, body{
 	height: 100%;
 	box-sizing: border-box;
 	scrollbar-width: thin;
-	overflow: hidden;
+	--overflow: hidden;
+
+	padding-top:1000px;
 }
 
 /* to setup the ambient */

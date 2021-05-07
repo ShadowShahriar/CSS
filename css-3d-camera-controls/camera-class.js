@@ -83,6 +83,8 @@ class CameraController{
 	}
 
 	setEvents(e){
+		e.preventDefault()
+
 		let startingPoint = this.retrieveCoords(e)
 		let currentData = this.retrieveCSSData()
 		let currentPoint = {x: 0, y: 0}
@@ -105,6 +107,8 @@ class CameraController{
 
 		// add the drag event
 		window[`on${this.pointerEvents.drag}`] = e => {
+			e.preventDefault()
+
 			currentPoint = that.retrieveCoords(e)
 			differenceX = (startingPoint.x - currentPoint.x) / multiplier
 			differenceY = (startingPoint.y - currentPoint.y) / multiplier
