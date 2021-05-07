@@ -69,7 +69,7 @@ class CameraController{
 		let that = this
 		window.addEventListener(this.pointerEvents.press, e => that.setEvents(e))
 		window.addEventListener(this.pointerEvents.drop, e => that.removeEvents(e))
-		window.addEventListener('touchmove', e => e.preventDefault(), { passive: false })
+		//window.addEventListener('touchmove', e => e.preventDefault(), { passive: false })
 		window.addEventListener('wheel', e => that.setWheel(e))
 	}
 
