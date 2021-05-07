@@ -24,9 +24,7 @@ html, body{
 	height: 100%;
 	box-sizing: border-box;
 	scrollbar-width: thin;
-	--overflow: hidden;
-
-	padding-top:1000px;
+	overflow: hidden; /* overflow must be hidden to make touch gestures work correctly */
 }
 
 /* to setup the ambient */

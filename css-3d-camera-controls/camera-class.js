@@ -69,7 +69,6 @@ class CameraController{
 		let that = this
 		window.addEventListener(this.pointerEvents.press, e => that.setEvents(e))
 		window.addEventListener(this.pointerEvents.drop, e => that.removeEvents(e))
-		document.documentElement.addEventListener('touchmove', e => e.preventDefault(), { passive: false })
 		window.addEventListener('wheel', e => that.setWheel(e))
 	}
 
@@ -83,7 +82,8 @@ class CameraController{
 	}
 
 	setEvents(e){
-		e.preventDefault()
+		if(e.target.dataset['isolated'] === '')
+			return console.info("Isolated content, gestures won't work")
 
 		let startingPoint = this.retrieveCoords(e)
 		let currentData = this.retrieveCSSData()
