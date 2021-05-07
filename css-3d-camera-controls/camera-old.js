@@ -13,12 +13,41 @@ function bindCamera(){
 		root.style.setProperty("--camera-scale", `${cameraScale}`)
 	})
 }
+6
+function obtainFeedback(e){
+	let variables, movement
+
+	if(e.ctrlKey){
+		variables = ['translateX', 'translateZ']
+		movement = 'translateXZ'
+	}
+	else if(e.altKey){
+		variables = ['translateY']
+		movement = 'translateY'
+	}
+	else if(e.shiftKey){
+		variables = ['perspective']
+		movement = 'perspective'
+	}
+	else{
+		variables = ['rotateX', 'rotateY']
+		movement = 'rotate'
+	}
+
+	return {
+		movement,
+		variables,
+		shiftKey: e.shiftKey,
+		altKey: e.altKey,
+		ctrlKey: e.ctrlKey
+	}
+}
 
 function setupEvents(e){
 	let startingPoint = retrieveCoords(e)
 	let currentData = grabCSSData()
 	let currentPoint = {x: 0, y: 0}
-	let differenceX, differenceY, scaleX
+	let differenceX, differenceY, scalarDifference
 
 	// 1366 * 768 is the workspace dimensions and 
 	// 6 is the ideal divider to produce smoother 
