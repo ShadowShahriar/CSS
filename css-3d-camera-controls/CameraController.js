@@ -5,13 +5,13 @@ class CameraController{
 		this.triggerChanges = () => {}
 
 		this.defaults = {
-			allowIsolation: true,
+			allowIsolation: false,
 
 			rotate: {
 				axisX: true,
-				rangeX: [0, 360],
+				rangeX: true, // [0, 360]
 				axisY: true,
-				rangeY: [0, 360],
+				rangeY: true,
 				speed: 1,
 			},
 
@@ -22,6 +22,7 @@ class CameraController{
 				rangeY: [-9216, 9216],
 				axisZ: true,
 				rangeZ: [-9216, 9216],
+				speed: 4,
 			},
 
 			zoom: {
@@ -45,6 +46,10 @@ class CameraController{
 	/* calculates linear distance between two points */
 	distance(x, y){
 		return Math.sqrt( ((x[0] - x[1]) ** 2) + ((y[0] - y[1]) ** 2) )
+	}
+
+	clamp(min, preference, max){
+		return Math.min(Math.max(min, preference), max)
 	}
 
 	/* returns the current mouse coordinates */
@@ -92,9 +97,9 @@ class CameraController{
 
 	triggerScale(e, method){
 		e.preventDefault()
+		let currentScale = this.retrieveCSSData().scale
 
 		if(this.defaults.zoom.wheel && method === 'wheel'){
-			let currentScale = this.retrieveCSSData().scale
 
 			let scaleSpeed = this.defaults.zoom.wheelSpeed
 			if(e.ctrlKey) scaleSpeed = this.defaults.zoom.wheelMaxSpeed
@@ -115,12 +120,12 @@ class CameraController{
 		let that = this
 		let root = that.root
 		let rootStyles = root.style
-		let differenceX, differenceY, distance, currentPerspective
+		let differenceX, differenceY
 
 		// 1366 * 768 is the workspace dimensions and 
 		// 6 is the ideal divider to produce smoother 
 		// drag experience
-		let force = ((1366 * 768) / 6) / this.defaults.rotate.speed
+		let force = ((1366 * 768) / 6)
 
 		// since we've got the force value, we map it 
 		// to window's dimensions
@@ -129,10 +134,68 @@ class CameraController{
 		// add an attribute that disables CSS transitions
 		this.root.setAttribute("data-no-transition", "1")
 
+		let distance, currentPerspective, currentRotateX, currentRotateY, currentTranslateX, currentTranslateY, currentTranslateZ
+
 		this.triggerChanges = e => {
 			e.target.setPointerCapture(e.pointerId)
 
-			console.log('A')
+			currentPoint = that.retrieveCoords(e)
+			differenceX = (startingPoint.x - currentPoint.x) / multiplier
+			differenceY = (startingPoint.y - currentPoint.y) / multiplier
+			distance = (startingPoint.x - currentPoint.x) + (startingPoint.y - currentPoint.y)
+
+			let updateRotateX = () => {
+				currentRotateX = currentData.rotateX + (differenceX * this.defaults.rotate.speed)
+				if(this.defaults.rotate.rangeX !== true)
+					currentRotateX = this.clamp(this.defaults.rotate.rangeX[0], currentRotateX, this.defaults.rotate.rangeX[1])
+				rootStyles.setProperty("--camera-Z", `${currentRotateX}`)
+			}
+
+			let updateRotateY = () => {
+				currentRotateY = currentData.rotateY + (differenceY * this.defaults.rotate.speed)
+				if(this.defaults.rotate.rangeY !== true)
+					currentRotateY = this.clamp(this.defaults.rotate.rangeY[0], currentRotateY, this.defaults.rotate.rangeY[1])
+				rootStyles.setProperty("--camera-Y", `${currentRotateY}`)
+			}
+
+			let updatePerspective = () => {
+				currentPerspective = currentData.perspective + (distance * this.defaults.perspective.speed)
+				currentPerspective = this.clamp(this.defaults.perspective.min, currentPerspective, this.defaults.perspective.max)
+				rootStyles.setProperty("--camera-perspective", `${currentPerspective}`)
+			}
+
+			let updateTranslateX = () => {
+				currentTranslateX = currentData.translateX - (differenceX * this.defaults.pan.speed)
+				currentTranslateX = this.clamp(this.defaults.pan.rangeX[0], currentTranslateX, this.defaults.pan.rangeX[1])
+				rootStyles.setProperty("--translate-X", `${currentTranslateX}`)
+			}
+
+			let updateTranslateY = () => {
+				currentTranslateY = currentData.translateY + (differenceX * this.defaults.pan.speed)
+				currentTranslateY = this.clamp(this.defaults.pan.rangeY[0], currentTranslateY, this.defaults.pan.rangeY[1])
+				rootStyles.setProperty("--translate-Y", `${currentTranslateY}`)
+			}
+
+			let updateTranslateZ = () => {
+				currentTranslateZ = currentData.translateZ + (differenceY * this.defaults.pan.speed)
+				currentTranslateZ = this.clamp(this.defaults.pan.rangeZ[0], currentTranslateZ, this.defaults.pan.rangeZ[1])
+				rootStyles.setProperty("--translate-Z", `${currentTranslateZ}`)
+			}
+
+			if(e.shiftKey){
+				updatePerspective()
+			}
+			else if(e.ctrlKey){
+				if(this.defaults.pan.axisX) updateTranslateX()
+				if(this.defaults.pan.axisZ) updateTranslateZ()
+			}
+			else if(e.altKey){
+				if(this.defaults.pan.axisY) updateTranslateY()
+			}
+			else{
+				if(this.defaults.rotate.axisX) updateRotateX()
+				if(this.defaults.rotate.axisY) updateRotateY()
+			}
 		}
 
 		// add event to respond to drag
@@ -155,7 +218,7 @@ window.addEventListener('load', () => {
 		.handles({
 			rotate: {
 				axisX: false,
-				speed: 40
+				speed: 1
 			},
 
 			zoom: {
