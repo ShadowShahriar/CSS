@@ -3,6 +3,24 @@ class CameraController{
 		this.root = document.querySelector(root)
 		this.rootSelector = root
 		this.triggerChanges = () => {}
+		this.eventCache = []
+		this.historyDifference = -1
+		this.removeCacheEvent = e => {
+			for(let i = 0; i < this.eventCache.length; i++){
+				if (this.eventCache[i].pointerId == e.pointerId){
+					this.eventCache.splice(i, 1)
+					break
+				}
+			}
+		}
+		this.updateCacheEvents = e => {
+			for(let i = 0; i < this.eventCache.length; i++){
+				if(e.pointerId == this.eventCache[i].pointerId){
+					this.eventCache[i] = e
+					break
+				}
+			}
+		}
 
 		this.defaults = {
 			allowIsolation: false,
@@ -114,6 +132,8 @@ class CameraController{
 		if(this.defaults.allowIsolation && e.target.dataset['isolated'] === '')
 			return console.info("Isolated content, gestures won't work")
 
+		this.eventCache.push(e)
+
 		let startingPoint = this.retrieveCoords(e)
 		let currentData = this.retrieveCSSData()
 		let currentPoint = {x: 0, y: 0}
@@ -138,6 +158,23 @@ class CameraController{
 
 		this.triggerChanges = e => {
 			e.target.setPointerCapture(e.pointerId)
+			this.updateCacheEvents(e)
+
+			if(this.eventCache.length === 2){
+				let currentDifference = Math.abs(this.eventCache[0].clientX - this.eventCache[1].clientX);
+
+				if(this.historyDifference > 0){
+					if(currentDifference > this.historyDifference){
+						this.root.style.background = "pink"
+					}
+					if(currentDifference < this.historyDifference){
+						this.root.style.background = "lightblue"
+					}
+				}
+
+				this.historyDifference = currentDifference;
+				return console.log("pinch")
+			}
 
 			currentPoint = that.retrieveCoords(e)
 			differenceX = (startingPoint.x - currentPoint.x) / multiplier
@@ -204,12 +241,17 @@ class CameraController{
 	}
 
 	removeEvents(e){
+		this.removeCacheEvent(e)
+
 		// remove the attribute that disables CSS transitions
 		this.root.setAttribute("data-no-transition", "0")
 
 		// remove the event that responds to drag
 		window.removeEventListener('pointermove', this.triggerChanges)
 		console.log("Events released")
+
+		if(this.eventCache.length < 2)
+			this.historyDifference = -1
 	}
 }
 
