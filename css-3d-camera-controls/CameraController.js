@@ -157,8 +157,8 @@ class CameraController{
 		let distance, currentPerspective, currentRotateX, currentRotateY, currentTranslateX, currentTranslateY, currentTranslateZ
 
 		this.triggerChanges = e => {
-			e.target.setPointerCapture(e.pointerId)
-			this.updateCacheEvents(e)
+			// e.target.setPointerCapture(e.pointerId)
+			// this.updateCacheEvents(e)
 
 			// if(this.eventCache.length === 2){
 			// 	let currentDifference = Math.abs(this.eventCache[0].clientX - this.eventCache[1].clientX);
