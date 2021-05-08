@@ -157,6 +157,7 @@ class CameraController{
 		let distance, currentPerspective, currentRotateX, currentRotateY, currentTranslateX, currentTranslateY, currentTranslateZ
 
 		this.triggerChanges = e => {
+			e.preventDefault()
 			// e.target.setPointerCapture(e.pointerId)
 			// this.updateCacheEvents(e)
 
