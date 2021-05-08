@@ -160,21 +160,21 @@ class CameraController{
 			e.target.setPointerCapture(e.pointerId)
 			this.updateCacheEvents(e)
 
-			if(this.eventCache.length === 2){
-				let currentDifference = Math.abs(this.eventCache[0].clientX - this.eventCache[1].clientX);
+			// if(this.eventCache.length === 2){
+			// 	let currentDifference = Math.abs(this.eventCache[0].clientX - this.eventCache[1].clientX);
 
-				if(this.historyDifference > 0){
-					if(currentDifference > this.historyDifference){
-						this.root.style.background = "pink"
-					}
-					if(currentDifference < this.historyDifference){
-						this.root.style.background = "lightblue"
-					}
-				}
+			// 	if(this.historyDifference > 0){
+			// 		if(currentDifference > this.historyDifference){
+			// 			this.root.style.background = "pink"
+			// 		}
+			// 		if(currentDifference < this.historyDifference){
+			// 			this.root.style.background = "lightblue"
+			// 		}
+			// 	}
 
-				this.historyDifference = currentDifference;
-				return console.log("pinch")
-			}
+			// 	this.historyDifference = currentDifference;
+			// 	return console.log("pinch")
+			// }
 
 			currentPoint = that.retrieveCoords(e)
 			differenceX = (startingPoint.x - currentPoint.x) / multiplier
@@ -242,6 +242,7 @@ class CameraController{
 
 	removeEvents(e){
 		this.removeCacheEvent(e)
+		this.eventCache = []
 
 		// remove the attribute that disables CSS transitions
 		this.root.setAttribute("data-no-transition", "0")
