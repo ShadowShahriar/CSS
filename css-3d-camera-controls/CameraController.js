@@ -158,24 +158,26 @@ class CameraController{
 
 		this.triggerChanges = e => {
 			e.preventDefault()
-			// e.target.setPointerCapture(e.pointerId)
-			// this.updateCacheEvents(e)
+			e.target.setPointerCapture(e.pointerId)
+			this.updateCacheEvents(e)
 
-			// if(this.eventCache.length === 2){
-			// 	let currentDifference = Math.abs(this.eventCache[0].clientX - this.eventCache[1].clientX);
+			let currentDifference = 0
 
-			// 	if(this.historyDifference > 0){
-			// 		if(currentDifference > this.historyDifference){
-			// 			this.root.style.background = "pink"
-			// 		}
-			// 		if(currentDifference < this.historyDifference){
-			// 			this.root.style.background = "lightblue"
-			// 		}
-			// 	}
+			if(this.eventCache.length === 2){
+				currentDifference = Math.abs(this.eventCache[0].clientX - this.eventCache[1].clientX);
 
-			// 	this.historyDifference = currentDifference;
-			// 	return console.log("pinch")
-			// }
+				if(this.historyDifference > 0){
+					if(currentDifference > this.historyDifference){
+						this.root.style.background = "pink"
+					}
+					if(currentDifference < this.historyDifference){
+						this.root.style.background = "lightblue"
+					}
+				}
+
+				this.historyDifference = currentDifference;
+				return console.log("pinch")
+			}
 
 			currentPoint = that.retrieveCoords(e)
 			differenceX = (startingPoint.x - currentPoint.x) / multiplier
