@@ -23,13 +23,16 @@
 					height: 100vh;
 					display: block;
 				}
-
 				#blobs{
-					filter: url("#filter"); 
 					mix-blend-mode: darken; 
-					opacity: 0.3;
+					filter: url("#filter"); 
+					opacity: 0.19;
+				}
+				#color{
+					background-color: #15171D;
 				}
 			</style>
+			<div class="container" id="color"></div>
 			<div class="container" id="blobs"></div>
 		</div>
 	</foreignObject>
