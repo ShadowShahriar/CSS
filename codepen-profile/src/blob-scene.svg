@@ -1,0 +1,37 @@
+<!-- Original code by Ben Szabo.
+	 Borrowed from https://codepen.io/finnhvman/pen/ExgMZgR.
+	 MIT | https://codepen.io/finnhvman/details/ExgMZgR -->
+<svg xmlns="http://www.w3.org/2000/svg">
+    <filter id="filter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.006" numOctaves="2" seed="2"/>
+        <feComponentTransfer>
+            <feFuncA type="discrete" tableValues="0 1 0"/>
+        </feComponentTransfer>
+        <feColorMatrix values="0 0 0 1 0
+                               0 0 0 1 0
+                               0 0 0 1 0
+                               0 0 0 0 1"/>
+    </filter>
+    <foreignObject width="100vw" height="100vh">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<style>
+				.container{
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 100vw;
+					height: 100vh;
+					display: block;
+				}
+
+				#blobs{
+					filter: url("#filter"); 
+					mix-blend-mode: darken; 
+					opacity: 0.3;
+				}
+			</style>
+			<div class="container" id="color" style='background-color: red'></div>
+			<div class="container" id="blobs"></div>
+		</div>
+	</foreignObject>
+</svg>
