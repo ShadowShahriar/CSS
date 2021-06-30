@@ -1,0 +1,59 @@
+/* relevant portion to control layout */
+article{
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1em;
+	max-width: 1200px;
+}
+
+header{
+	text-align: center;
+	flex: 1;
+}
+
+header img{
+	width: 14em;
+}
+
+.post{
+	flex: 1000;
+	min-width: 15em;
+}
+
+/* decoration */
+html{
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html, body{
+	position: relative;
+	inset: 0;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+	box-sizing: border-box;
+}
+
+body{
+	display: grid;
+	place-items: center;
+	padding: 1em 2em;
+	background-color: #edecf3;
+}
+
+article{
+	background-color: rgb(250, 250, 255);
+	box-shadow: 0 1.5em 2em 0em rgba(0,0,0,0.2);
+	border-radius: 0.6em;
+}
+
+header img{
+	border-radius: 0.6em;
+}
+
+.post p{
+	padding: 1em 2em;
+	margin: 0;
+}
