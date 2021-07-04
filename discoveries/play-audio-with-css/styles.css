@@ -1,0 +1,101 @@
+/*
+	Only works in Chrome and Chromium-based browsers. Tap/Click the button to hear a 'WOW!'
+
+	Known limitations
+	- The audio won't play until the audio is loaded.
+	- The audio is played only once in Chrome (since v65, I guess)
+	- It doesn't work if the window loses focus or the user switches to another tab. However, it does after a reload.
+	- It won't play in Firefox.
+	- It won't work if it has 'pointer-events: none' or 'opacity: 0' applied (no surprise)
+	- It only works with embed and object tags. We can't use an audio tag here (tested in v90)
+*/
+
+/* relevent portion */
+embed{
+	position: absolute;
+	left: -100%;
+	top: -100%;
+	opacity: 0.5;
+	/* opacity: 0; */
+	display: none;
+	/* pointer-events: none; */
+}
+
+button:active + embed{
+	display: block;
+}
+
+/* decoration */
+button{
+	font-family: inherit;
+	font-size: 2rem;
+	appearance: none;
+	-webkit-appearance: none;
+	border: 0;
+	background-color: transparent;
+	transform: rotate(3deg) scale(1);
+	transition: transform ease 200ms;
+	cursor: pointer;
+}
+
+button:hover{
+	transform: rotate(5deg) scale(1.2);
+}
+
+button span{
+	display: block;
+	font-size: 8rem;
+	font-weight: bold;
+	position: relative;
+	transform: rotate(-5deg);
+	border-radius: 10px;
+	background-color: #000;
+	color: #fff;
+	line-height: 1.1;
+	transition: inherit;
+}
+
+button:active{
+	transform: rotate(3deg) scale(1.1);
+}
+
+button:active span{
+	transform: rotate(-6deg) scale(1.8);
+}
+
+button:not(:active) span{
+	transition-delay: 600ms;
+}
+
+/* layout */
+html, body{
+	position: relative;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+html{
+	font-family:
+		"Comic Sans MS", 
+		fantasy,
+		-apple-system, 
+		BlinkMacSystemFont, 
+		'Segoe UI', 
+		sans-serif;
+	font-size: min(16px, 3vmin);
+	display: block;
+	background-image: radial-gradient(circle at 50%, #fff, #eee);
+	background-size: 100% 100%;
+	background-attachment: fixed;
+}
+
+body{
+	display: grid;
+	place-items: center;
+	background-color: transparent;
+}
+
+/* Made with Coffee, Care, and Curiosity by @ShadowShahriar */
