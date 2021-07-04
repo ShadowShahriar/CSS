@@ -1,0 +1,72 @@
+/* relevant portion */
+.Google{
+	--size: 512;
+
+	position: relative;
+	width: calc(var(--size) * 1px);
+	height: calc(var(--size) * 1px);
+	mix-blend-mode: darken;
+
+	--color-transparent: rgba(0, 0, 0, 0);
+	--color-mask: #fff;
+	--color-1: #ea4335;
+	--color-2: #fbbc05;
+	--color-3: #34a853;
+	--color-4: #4285f4;
+}
+
+.Google::before{
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 613px;
+	height: 613px;
+	transform: translate(-50%, -50%) scale(calc(var(--size) / 613));
+	border-radius: 50%;
+	display: block;
+
+	background-image: 
+	linear-gradient(var(--color-mask), var(--color-mask)),
+	linear-gradient(var(--color-4), var(--color-4)),
+	linear-gradient(135deg, var(--color-transparent) 50%, var(--color-mask) 1px),
+	radial-gradient(circle at 50% 50%, var(--color-mask) 43%, var(--color-transparent) 43.2%),
+	radial-gradient(ellipse at 50% 50%, var(--color-mask) 43%, var(--color-transparent) 43.2%),
+	radial-gradient(ellipse at 50% 50%, var(--color-mask) 43%, var(--color-transparent) 43.2%),
+
+	linear-gradient(var(--color-4), var(--color-4)),
+	conic-gradient(from 66.6deg at 50% 62%, var(--color-4) 61.5deg, var(--color-transparent) 61.7deg),
+	conic-gradient(from -232.5deg at 50% 62%, var(--color-3) 22deg, var(--color-transparent) 22deg),
+	conic-gradient(from 155.2deg at 50% 38.3%, var(--color-3) 77.5deg, var(--color-transparent) 77.7deg),
+	conic-gradient(from -85.3deg at 50% 62%, var(--color-2) 33deg, var(--color-transparent) 33.2deg),
+	conic-gradient(from -127.3deg at 50% 38.3%, var(--color-2) 33deg, var(--color-transparent) 0deg),
+	conic-gradient(from -52.3deg at 50% 62%, var(--color-1) 87deg, var(--color-transparent) 0deg);
+
+	background-position: 327px 168px, 307px 255px, 423px 69px, 15px 48px, 9px 2px, 11px 4px, 307px 255px, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+	background-size: 310px 87px, 280px 115px, 100px 100px, 594px 543px, 594px 608px, 594px 608px, 300px 135px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+	background-repeat: no-repeat;
+}
+
+/* layout */
+html, body{
+	padding: 0;
+	margin: 0;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+html{
+	background-image: radial-gradient(circle at 50%, #fff, #eee);
+	background-size: 100% 100%;
+	background-attachment: fixed;
+	display: block;
+}
+
+body{
+	background-color: transparent;
+	display: grid;
+	place-items: center;
+}
+
+/* Made with Coffee, Care, and Curiosity by @ShadowShahriar */
