@@ -5,13 +5,26 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Curious Eyes</title>
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="styles-updated-with-eyebrows.css">
 </head>
 <body>
+	<button autofocus="true"></button>
 
-	<section>
+	<!-- add "blue" attribute to <section> to change color palette
+		 <section blue> -->
+	<section blue>
 		<div class="eye"></div>
 		<div class="eye"></div>
+
+		<svg viewBox="0 0 43.89 22.511">
+			<symbol id="eyebrow">
+				<g transform="translate(-33.467 -103.92)">
+					<path class="eyebrow-path" d="m34.869 125.03c3.3478-3.9226 6.6992-7.8494 9.4385-10.849s4.878-5.0848 7.9014-6.6225 6.9333-2.53 11.039-2.1572c4.1057 0.37276 8.4068 2.1104 12.708 3.8479"/>
+				</g>
+			</symbol>
+			<use xlink:href="#eyebrow" href="#eyebrow"/>
+			<use xlink:href="#eyebrow" href="#eyebrow" class="eyebrow-inverted"/>
+		</svg>
 	</section>
 	
 </body>
