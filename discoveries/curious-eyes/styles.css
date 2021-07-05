@@ -1,0 +1,227 @@
+/*
+
+=== Scene ===
+
+- Suppose a curious kid is looking around the house to see their birthday celebration arrangement. 
+
+- After a while, he thought mom forgot his birthday. Sigh, a sad face. 
+
+- Then, he heard a voice and a blast of party poppers. His joy knew no bounds!
+
+*/
+
+/* to contain the eyes */
+section{
+	position: relative;
+	display: flex;
+	font-size: 1.8vmin;
+	margin-bottom: 11vmin;
+	transform: rotate(20deg) scale(0);
+	animation: bounce cubic-bezier(.18, .89, .32, 1.28) 0.4s forwards;
+}
+
+@keyframes bounce{
+	to{
+		transform: rotate(0deg) scale(1);
+	}
+}
+
+/* blush spots */
+section::before,
+section::after{
+	content: "";
+	position: absolute;
+	bottom: 0;
+	width: 6em;
+	height: 6em;
+	background-color: rgba(225, 175, 210, 0.549);
+	border-radius: 54% 46% 53% 47% / 52% 36% 64% 48%;
+	animation: blush ease-out 9s 0.4s forwards;
+	opacity: 0;
+}
+
+@keyframes blush{
+	10%, 35%{
+		opacity: 1;
+	}
+	40%, 65%{
+		opacity: 0;
+	}
+	70%, 100%{
+		opacity: 1;
+	}
+}
+
+section::before{
+	transform: translate(-100%, 160%);
+	left: 0;
+}
+
+section::after{
+	transform: translate(100%, 160%) scaleX(-1);
+	right: 0;
+}
+
+.eye{
+	position: relative;
+	width: 11em;
+	height: 20em;
+	border-radius: 10em;
+	margin: 1.8em;
+	background-color: white;
+	flex: 1;
+	overflow: hidden;
+	box-shadow: 0 0 0 0.5em rgba(8, 33, 133, 0.16);
+	box-sizing: border-box;
+}
+
+/* pupil */
+.eye::before{
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	font-size: 50%;
+	width: 11em;
+	height: 24em;
+	background-color: #5e9cff; /* #2465cc, #24cc75 */
+	background-repeat: no-repeat;
+	transform: translate(-50%, -50%) translate(0, 0);
+	border-radius: inherit;
+	display: block;
+
+	-webkit-mask: linear-gradient(#fff, #fff);
+	-webkit-mask-composite: source-in;
+	-webkit-mask-size: 100% 100%;
+	-webkit-mask-position: left 0px bottom 50%;
+	-webkit-mask-repeat: no-repeat;
+
+	mask: linear-gradient(#fff, #fff);
+	mask-composite: add;
+	mask-size: 100% 100%;
+	mask-position: left 0px bottom 50%;
+	mask-repeat: no-repeat;
+
+	animation: 
+		blink ease 2.4s forwards 2, 
+		lookaround cubic-bezier(.79,.14,.15,.86) 4s forwards 1,
+		suspect cubic-bezier(.19,1,.22,1) 0.8s 3.1s forwards 1,
+		shocked cubic-bezier(.19,1,.22,1) 0.8s 4.3s forwards 1,
+		lookup cubic-bezier(.79,.14,.15,.86) 1s 5.1s forwards 1;
+}
+
+@keyframes blink{
+	10%{
+		-webkit-mask-size: 100% 0%;		
+		mask-size: 100% 0%;
+	}
+	22%, 100%{
+		-webkit-mask-size: 100% 100%;
+		mask-size: 100% 100%;
+	}
+}
+
+@keyframes lookaround{
+	20%{
+		transform: translate(-50%, -50%) translate(-4em, 5em);
+	}
+	40%{
+		transform: translate(-50%, -50%) translate(4em, 5em);
+	}
+	60%{
+		transform: translate(-50%, -50%) translate(4em, -1em);
+	}
+	80%, to{
+		transform: translate(-50%, -50%) translate(-4em, 4em);
+	}
+}
+
+@keyframes suspect{
+	from{
+		-webkit-mask-position: left 0 bottom 0;
+		mask-position: left 0 bottom 0;
+	}
+	to{
+		-webkit-mask-position: left 0 bottom 0;
+		mask-position: left 0 bottom 0;
+		-webkit-mask-size: 100% 72%;
+		mask-size: 100% 72%;
+	}
+}
+
+@keyframes shocked{
+	from{
+		-webkit-mask-position: left 0 bottom 0;
+		mask-position: left 0 bottom 0;
+		-webkit-mask-size: 100% 72%;
+		mask-size: 100% 72%;
+	}
+	to{
+		-webkit-mask-position: left 0 bottom 0;
+		mask-position: left 0 bottom 0;
+		-webkit-mask-size: 100% 100%;
+		mask-size: 100% 100%;
+	}
+}
+
+@keyframes lookup{
+	from{
+		transform: translate(-50%, -50%) translate(-4em, 4em);
+	}
+	50%, 80%{
+		transform: translate(-50%, -50%) translate(-4em, -3em);
+	}
+	to{
+		transform: translate(-50%, -50%) translate(0, 0);
+	}
+}
+
+/* eyelids to express surprise and joy */
+.eye::after{
+	--lid-height: 40%;
+	--lid-subtract: calc(100% - var(--lid-height));
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	width: 100%;
+	padding: 50% 0;
+	height: auto;
+	background: white;
+	display: block;
+	transform: translate(-50%, 100%);
+	transform-origin: 50% 100%;
+	border-radius: 50% 50% 50% 50% / var(--lid-height) var(--lid-height) var(--lid-subtract) var(--lid-subtract);
+	animation: eyelid cubic-bezier(.68,-0.55,.27,1.55) 0.8s 6s forwards;
+}
+
+@keyframes eyelid{
+	to{
+		transform: translate(-50%, 30%);		
+	}
+}
+
+/* layout and decoration */
+html, body{
+	position: relative;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+html{
+	display: block;
+	background-image: radial-gradient(circle at 50%, #fff, #f0f0f0);
+	background-size: 100% 100%;
+	background-attachment: fixed;
+}
+
+body{
+	display: grid;
+	place-items: center;
+	background-color: transparent;
+}
+
+/* Made with Coffee, Care, and Curiosity by @ShadowShahriar */
