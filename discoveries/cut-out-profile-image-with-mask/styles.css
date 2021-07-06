@@ -1,0 +1,83 @@
+/* relevant portion */
+section{
+	position: relative;
+	--circle-size: 12vmin;
+	--circle-offset: 0px;
+	--circle-padding: 1.8vmin;
+}
+
+img{
+	width: 43vmin;
+	display: block;
+	border-radius: 50%;
+	padding: 1px;
+
+	/* storing repeating portions as variables */
+	--mask: 
+		linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), 
+		radial-gradient(50% 50%, rgb(255, 255, 255) 98%, transparent 100%);
+	--mask-size: 100% 100%, var(--circle-size) var(--circle-size);
+  
+	mask-image: var(--mask);
+	mask-position: 0 0, left var(--circle-offset) bottom var(--circle-offset);
+	mask-size: var(--mask-size);
+	mask-repeat: no-repeat;
+	mask-composite: exclude;
+
+	-webkit-mask-image: var(--mask);
+	-webkit-mask-position: 0 0, left var(--circle-offset) bottom var(--circle-offset);
+	-webkit-mask-size: var(--mask-size);
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-composite: source-out;
+}
+
+section::after{
+	content: "";
+	position: absolute;
+	left: var(--circle-offset);
+	bottom: var(--circle-offset);
+	width: var(--circle-size);
+	height: var(--circle-size);
+	border-radius: 50%;
+	background-color: rgb(34, 99, 221);
+	border: var(--circle-padding) solid transparent;
+	box-sizing: border-box;
+	background-clip: content-box;
+	display: block;
+}
+
+/* layout and decoration */
+html, body{
+	position: relative;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+html{
+	font-family: 
+		-apple-system, 
+		BlinkMacSystemFont, 
+		'Segoe UI', 
+		Roboto, 
+		Oxygen, 
+		Ubuntu, 
+		Cantarell, 
+		'Open Sans', 
+		'Helvetica Neue', 
+		sans-serif;
+	display: block;
+	background-image: radial-gradient(circle at 50%, #fff, #eee);
+	background-size: 100% 100%;
+	background-attachment: fixed;
+}
+
+body{
+	display: grid;
+	place-items: center;
+	background-color: transparent;
+}
+
+/* Made with Coffee, Care, and Curiosity by @ShadowShahriar */
