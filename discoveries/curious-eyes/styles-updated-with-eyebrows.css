@@ -1,5 +1,6 @@
-/* Try tapping/clicking the page if the animation is paused.
+/* Try tapping/clicking the page if the animation is paused. */
 
+/*
 === Scene ===
 
 - Suppose a curious kid is looking around the house to see their birthday celebration arrangement. 
@@ -22,6 +23,10 @@
 	
 	v3 - https://jsfiddle.net/ShadowShahriar/5zbwvfoa/4/
 	- Added animation play/pause functionality
+
+	v3.1 - https://jsfiddle.net/ShadowShahriar/5zbwvfoa/5/
+	- Added two more eye animations
+	- Fixed play/pause functionality using `pointer-events: none`
 */
 
 /* to contain the eyes */
@@ -30,9 +35,10 @@ section{
 	display: flex;
 	font-size: 1.8vmin;
 	margin-bottom: 11vmin;
-	transform: rotate(20deg) scale(0);
+	transform: rotate(30deg) scale(0);
 	animation: bounce cubic-bezier(.18, .89, .32, 1.28) 0.4s forwards;
 	animation-play-state: var(--play-state, running);
+	pointer-events: none;
 
 	--color-eyes: rgb(158, 221, 109);
 	--color-eyebrows: rgb(158, 221, 109);
@@ -139,8 +145,25 @@ section::after{
 		lookaround cubic-bezier(.79,.14,.15,.86) 4s forwards 1,
 		suspect cubic-bezier(.19,1,.22,1) 0.8s 3.1s forwards 1,
 		shocked cubic-bezier(.19,1,.22,1) 0.8s 4.3s forwards 1,
-		lookup cubic-bezier(.79,.14,.15,.86) 1s 5.1s forwards 1;
+		lookup cubic-bezier(.79,.14,.15,.86) 1s 5.1s forwards 1,
+		eyetear steps(5) 200ms 6.1s forwards 1,
+		tearflowstart steps(2) 200ms 6.2s forwards infinite;
+
 	animation-play-state: var(--play-state, running);
+
+	background-image: linear-gradient(transparent, transparent);
+
+	background-size: 
+		7.5em 7.5em,
+		3.5em 3.5em,
+		3.5em 3.5em;
+
+	background-position: 
+		-1em -1em,
+		5.5em 4em,
+		4em 4.8em;
+
+	background-repeat: no-repeat;
 }
 
 @keyframes blink{
@@ -206,6 +229,82 @@ section::after{
 	}
 	to{
 		transform: translate(-50%, -50%) translate(0, 0);
+	}
+}
+
+@keyframes eyetear{
+	0%{
+		--circle-1: 0%;
+		--circle-2: 0%;
+		--circle-3: 0%;
+
+		background-image: 
+		radial-gradient(circle at center, white var(--circle-1), transparent calc(var(--circle-1) + 1px)),
+		radial-gradient(circle at center, white var(--circle-2), transparent calc(var(--circle-2) + 1px)),
+		radial-gradient(circle at center, rgba(255,255,255,0.3) var(--circle-3), transparent calc(var(--circle-3) + 1px));
+	}
+	20%{
+		--circle-1: 12.5%;
+		--circle-2: 12.5%;
+		--circle-3: 12.5%;
+
+		background-image: 
+		radial-gradient(circle at center, white var(--circle-1), transparent calc(var(--circle-1) + 1px)),
+		radial-gradient(circle at center, white var(--circle-2), transparent calc(var(--circle-2) + 1px)),
+		radial-gradient(circle at center, rgba(255,255,255,0.3) var(--circle-3), transparent calc(var(--circle-3) + 1px));
+	}
+	40%{
+		--circle-1: 25%;
+		--circle-2: 25%;
+		--circle-3: 25%;
+
+		background-image: 
+		radial-gradient(circle at center, white var(--circle-1), transparent calc(var(--circle-1) + 1px)),
+		radial-gradient(circle at center, white var(--circle-2), transparent calc(var(--circle-2) + 1px)),
+		radial-gradient(circle at center, rgba(255,255,255,0.3) var(--circle-3), transparent calc(var(--circle-3) + 1px));
+	}
+	60%{
+		--circle-1: 37.5%;
+		--circle-2: 37.5%;
+		--circle-3: 37.5%;
+
+		background-image: 
+		radial-gradient(circle at center, white var(--circle-1), transparent calc(var(--circle-1) + 1px)),
+		radial-gradient(circle at center, white var(--circle-2), transparent calc(var(--circle-2) + 1px)),
+		radial-gradient(circle at center, rgba(255,255,255,0.3) var(--circle-3), transparent calc(var(--circle-3) + 1px));
+	}
+	80%, to{
+		--circle-1: 50%;
+		--circle-2: 50%;
+		--circle-3: 50%;
+
+		background-image: 
+		radial-gradient(circle at center, white var(--circle-1), transparent calc(var(--circle-1) + 1px)),
+		radial-gradient(circle at center, white var(--circle-2), transparent calc(var(--circle-2) + 1px)),
+		radial-gradient(circle at center, rgba(255,255,255,0.3) var(--circle-3), transparent calc(var(--circle-3) + 1px));
+	}
+}
+
+@keyframes tearflowstart{
+	from{
+		--circle-1: 50%;
+		--circle-2: 50%;
+		--circle-3: 50%;
+
+		background-image: 
+		radial-gradient(circle at center, white var(--circle-1), transparent calc(var(--circle-1) + 1px)),
+		radial-gradient(circle at center, white var(--circle-2), transparent calc(var(--circle-2) + 1px)),
+		radial-gradient(circle at center, rgba(255,255,255,0.3) var(--circle-3), transparent calc(var(--circle-3) + 1px));
+	}
+	to{
+		--circle-1: 46%;
+		--circle-2: 46%;
+		--circle-3: 46%;
+
+		background-image: 
+		radial-gradient(circle at center, white var(--circle-1), transparent calc(var(--circle-1) + 1px)),
+		radial-gradient(circle at center, white var(--circle-2), transparent calc(var(--circle-2) + 1px)),
+		radial-gradient(circle at center, rgba(255,255,255,0.3) var(--circle-3), transparent calc(var(--circle-3) + 1px));
 	}
 }
 
@@ -368,6 +467,7 @@ button{
 	display: block;
 	background: rgba(0, 0, 0, 0);
 	border: none;
+	outline: none;
 }
 
 button:not(:focus) + section{
