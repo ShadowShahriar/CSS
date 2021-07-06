@@ -1,0 +1,103 @@
+/* Work-in-progress of https://github.com/ShadowShahriar/CSS/discoveries/strike-through-text-and-write-on-text */
+
+svg{
+	overflow: visible;
+	width: 92vmin;
+	position: relative;
+}
+
+/* apply mask to text */
+.write-on-text{
+	mask: url(#write-on-mask);
+	-webkit-mask: url(#write-on-mask);
+}
+
+.write-on-text-container{
+	stroke: none;
+	fill: #3f9ced;
+	font-family: 'Dancing Script', cursive;
+	font-size: 17.938px;
+	font-weight: bold;
+	line-height: 1.25;
+}
+
+/* using the set of paths as a mask */
+#write-on-mask-container{
+	--animation-speed: 1;
+	fill: none;
+	stroke: rgba(255, 255, 255, 0.5);
+	stroke-linecap: round;
+	stroke-width: 1.2;
+	stroke-dasharray: 186 186;
+}
+
+path{
+	--word-1-delay: 100ms;
+	--word-2-delay: 400ms;
+	stroke-dashoffset: 186;
+	animation: stroke ease forwards calc(2s / var(--animation-speed));
+}
+
+path:nth-child(2n){
+	--word-1-delay: 300ms;
+	--word-2-delay: 600ms;
+	stroke: rgb(255, 255, 255);
+}
+
+@keyframes stroke{
+	to{
+		stroke-dashoffset: 0;
+		stroke-width: 3;
+	}
+}
+
+/* animate the paths synchronously */
+.path-Anyone{
+	animation-delay: var(--word-1-delay);
+	animation-timing-function: ease-out;
+}
+
+.letter-A-edge{
+	animation-delay: calc((var(--word-1-delay) + 400ms) / var(--animation-speed));
+}
+
+.letter-B-edge{
+	animation-delay: calc((var(--word-2-delay) + 1500ms) / var(--animation-speed));
+}
+
+.letter-B-line{
+	animation-delay: calc((var(--word-2-delay) + 1900ms) / var(--animation-speed));
+}
+
+.path-etter{
+	animation-delay: calc((var(--word-2-delay) + 2300ms) / var(--animation-speed));
+}
+
+.letter-t-horz{
+	animation-delay: calc((var(--word-2-delay) + 3000ms) / var(--animation-speed));
+}
+
+/* layout */
+html, body{
+	position: relative;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+html{
+	display: block;
+	background-image: radial-gradient(circle at 50%, #fff, #eee);
+	background-size: 100% 100%;
+	background-attachment: fixed;
+}
+
+body{
+	display: grid;
+	place-items: center;
+	background-color: transparent;
+}
+
+/* Made with Coffee, Care, and Curiosity by @ShadowShahriar */
