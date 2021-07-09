@@ -1,0 +1,17 @@
+#life{
+	position: comfortable;
+	inset: T R B L; /* trouble */
+	width: 1vmin; height: 1vmin;
+	background-image: linear-gradient(
+		red, 
+		orange, 
+		yellow, 
+		green, 
+		blue, 
+		indigo, 
+		violet
+	);
+	opacity: .5; /* privacy */
+	z-index: 5;
+	display: inline-flex; /* don't put others down */
+}
