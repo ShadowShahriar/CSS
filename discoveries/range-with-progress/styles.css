@@ -1,0 +1,63 @@
+/* the approach */
+input[type="range"]{
+	-webkit-appearance: none;
+	width: 400px;
+	height: 56px;
+	background-color: rgba(0,0,0,0);
+	overflow: hidden;
+}
+
+input[type="range"]::-webkit-slider-runnable-track{
+	-webkit-appearance: none;
+	background-color: rgba(0,0,0,0.3);
+	height: 20px;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+	-webkit-appearance: none;
+	background-color: rgb(233,235,236);
+	height: 50px;
+	width: 50px;
+	position: relative;
+	top: 50%;
+	left: 0px;
+	transform: translateY(-50%);
+	border-radius: 50%;
+	box-shadow: 
+		calc(-100vmax - 51px) 0 0 100vw rgba(0,0,0,0.3);
+	clip-path: polygon(
+		110% 100%, 
+		0 110%, 
+		0 calc(50.5% + 10px), 
+		-100vmax calc(50.5% + 10px), 
+		-100vmax calc(50.5% - 10px), 
+		0 calc(50.5% - 10px), 
+		0 -10%, 
+		110% 0
+	);
+}
+
+/* to make it look pretty */
+html, body{
+	position: relative;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+html{
+	display: block;
+	background-image: radial-gradient(circle at 50%, #fff, #eee);
+	background-size: 100% 100%;
+	background-attachment: fixed;
+}
+
+body{
+	display: grid;
+	place-items: center;
+	background-color: transparent;
+}
+
+/* Made with Coffee, Care, and Curiosity by @ShadowShahriar */
