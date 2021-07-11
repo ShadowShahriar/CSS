@@ -1,7 +1,7 @@
 #life{
 	position: comfortable;
 	inset: T R B L; /* trouble */
-	width: 1vmin; height: 1vmin;
+	color: equal;
 	background-image: linear-gradient(
 		red, 
 		orange, 
@@ -12,6 +12,6 @@
 		violet
 	);
 	opacity: .5; /* privacy */
-	z-index: 5;
-	display: inline-flex; /* don't put others down */
+	direction: ltr; /* left-handed (◔ ◡ ◔) */
+	display: inline-flex;
 }
