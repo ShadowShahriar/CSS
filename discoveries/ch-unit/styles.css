@@ -1,0 +1,40 @@
+/* relevant portion */
+span{
+	--color-highlight: hsl(219.5deg, 79.9%, 48.8%);
+	color: hsl(214.2deg, 36.4%, 57.5%);
+	background-color: currentColor;
+	background-image: linear-gradient(var(--color-highlight), var(--color-highlight));
+	background-repeat: no-repeat;
+	background-size: 2.3ch 100%; /* the best part is - these magic numbers are consistent for a specific typeface ^.^ */
+	background-position: 3.6ch 0; /* calculated offset for Comfortaa typeface */
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* to make things look pretty */
+html, body{
+	position: relative;
+	inset: 0;
+	width: 100%;
+	min-height: 100vh;
+	padding: 0;
+	margin: 0;
+}
+
+html{
+	font-family: Comfortaa, "Comic Sans MS", cursive;
+	font-size: 19vmin; /* fallback for non-supported browsers */
+	font-size: max(3em, 19vmin);
+	background-image: radial-gradient(circle at 50%, #fff, #fefefe);
+	background-size: 100% 100%;
+	background-attachment: fixed;
+	display: block;
+}
+
+body{
+	display: grid;
+	place-items: center;
+	background-color: transparent;
+}
+
+/* Made with Coffee, Care, and Curiosity by @ShadowShahriar */
