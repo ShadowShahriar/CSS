@@ -1,0 +1,119 @@
+/* fork of github.com/ShadowShahriar/CSS/discoveries/fancy-buttony-toggles */
+/* relevant portion */
+:root{
+	--accent: #8424f2;
+	--accent-alpha: #8424f244;
+
+	--text: #000;
+	--text-alpha: #00000093;
+	--text-active: #00000050;
+	--text-alpha-bg: #00000033;
+}
+
+section{
+	position: relative;
+	font-size: 0;
+	margin: 1vmin;
+}
+
+[dir="rtl"] label{
+	line-height: 135%;
+}
+
+.toggles input[type="checkbox"]{
+	position: relative;
+	inset: 0;
+	opacity: 0;
+	margin: 0 -7px;
+}
+
+.toggles label{
+	position: relative;
+	font-family: 'Montserrat', 'Amiri', sans-serif;
+	font-size: 3.5vmin; /* fallback for non-supported browsers */
+	font-size: max(0.8rem, 3.5vmin);
+	color: var(--text-alpha);
+	white-space: nowrap;
+
+	margin-inline-end: 0.7em;
+	margin-bottom: 1em;
+	padding: 0.4em 1.2em;
+	border-radius: 10em;
+
+	display: inline-block;
+	cursor: pointer;
+	transition: color ease 400ms;
+	transition-property: color, background-color;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.toggles label:last-of-type{
+	margin-inline-end: 0;
+}
+
+.toggles label::before{
+	content: "";
+	position: absolute;
+	inset: 0;
+	width: 100%; height: 100%;
+	background-color: var(--accent-alpha);
+	border-radius: inherit;
+	clip-path: circle(0% at 50% 100%);
+	transition: clip-path ease 300ms;
+	display: block;
+	z-index: -1;
+}
+
+.toggles label:hover{
+	color: var(--text);
+	background-color: var(--text-alpha-bg);
+}
+
+.toggles label:active{
+	color: var(--text);
+	background-color: var(--text-active);
+}
+
+.toggles input[type="checkbox"]:focus-visible + label{
+	outline: 0.7vmin solid var(--accent);
+	outline-offset: 0;
+}
+
+.toggles input[type="checkbox"]:checked + label{
+	color: var(--accent);
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.toggles input[type="checkbox"]:checked + label::before{
+	clip-path: circle(100% at 50% 100%);
+}
+
+::selection{
+	background-color: var(--accent-alpha);
+	color: #fff;
+}
+
+/* to make things look pretty */
+html, body{
+	position: relative;
+	inset: 0;
+	width: 100%;
+	min-height: 100vh;
+	padding: 0;
+	margin: 0;
+}
+
+html{
+	background-image: radial-gradient(circle at 50%, #fff, #fefefe);
+	background-size: 100% 100%;
+	background-attachment: fixed;
+	display: block;
+}
+
+body{
+	display: grid;
+	place-items: center;
+	background-color: transparent;
+}
+
+/* Made with Coffee, Care, and Curiosity by @ShadowShahriar */
