@@ -1,0 +1,98 @@
+/* fork of github.com/ShadowShahriar/CSS/discoveries/fancy-toggles */
+/* relevant portion */
+:root{
+	--accent: #245ef2;
+	--accent-alpha: #245ef244;
+	--text: #000;
+	--text-alpha: #00000093;
+	--text-alpha-bg: #00000033;
+}
+
+section{
+	position: relative;
+	font-size: 0;
+	margin: 1vmin;
+}
+
+[dir="rtl"] label{
+	--logical-start: left;
+	--logical-end: right;
+	line-height: 135%;
+}
+
+.toggles input[type="checkbox"]{
+	position: relative;
+	inset: 0;
+	opacity: 0;
+	margin: 0 -7px;
+}
+
+.toggles label{
+	position: relative;
+	font-family: 'Montserrat', 'Amiri', sans-serif;
+	font-size: 3.5vmin;
+	font-size: max(0.8rem, 3.5vmin);
+	color: var(--text-alpha);
+	white-space: nowrap;
+
+	margin-inline-end: 0.9em;
+	margin-bottom: 1em;
+
+	display: inline-block;
+	cursor: pointer;
+	transition: ease 400ms;
+	transition-property: color, background-color;
+	transition-duration: 400ms, 200ms;
+	padding: 0.6em 1.6em;
+	background-color: rgba(0, 0, 0, 0);
+	border-radius: 10em;
+}
+
+.toggles label:last-of-type{
+	margin-inline-end: 0;
+}
+
+.toggles label:hover{
+	color: var(--text);
+	background-color: var(--text-alpha-bg);
+}
+
+.toggles input[type="checkbox"]:focus-visible + label{
+	outline: 0.4vmin solid var(--accent);
+	outline-offset: 0.6vmin;
+}
+
+.toggles input[type="checkbox"]:checked + label{
+	color: var(--accent);
+	background-color: var(--accent-alpha);
+}
+
+::selection{
+	background-color: var(--accent-alpha);
+	color: #fff;
+}
+
+/* to make things look pretty */
+html, body{
+	position: relative;
+	inset: 0;
+	width: 100%;
+	min-height: 100vh;
+	padding: 0;
+	margin: 0;
+}
+
+html{
+	background-image: radial-gradient(circle at 50%, #fff, #fefefe);
+	background-size: 100% 100%;
+	background-attachment: fixed;
+	display: block;
+}
+
+body{
+	display: grid;
+	place-items: center;
+	background-color: transparent;
+}
+
+/* Made with Coffee, Care, and Curiosity by @ShadowShahriar */
