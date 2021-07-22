@@ -24,6 +24,7 @@ div{
 
 	filter: hue-rotate(0);
 	mask: radial-gradient(circle at 124% 50%, transparent 39%, white calc(39% + 1px));
+	-webkit-mask: radial-gradient(circle at 124% 50%, transparent 39%, white calc(39% + 1px));
 	background-color: hsl(0, 0%, 78%);
 	border-radius: 50%;
 
@@ -39,6 +40,7 @@ div{
 
 div:last-child{
 	mask: none;
+	-webkit-mask: none;
 }
 
 @keyframes hue{
