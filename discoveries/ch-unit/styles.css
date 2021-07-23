@@ -8,6 +8,7 @@ span{
 	background-size: 2.3ch 100%; /* the best part is - these magic numbers are consistent for a specific typeface ^.^ */
 	background-position: 3.6ch 0; /* calculated offset for Comfortaa typeface */
 	background-clip: text;
+	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
