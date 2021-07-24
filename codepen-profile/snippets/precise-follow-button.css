@@ -13,4 +13,9 @@
 		--button-padding-inline: 11px;
 		--button-border-radius: 3px;
 	}
+
+	span[data-test-id="action-menu"][title="Actions"] > button[data-size="mini"]{
+		padding: 8px 7px;
+		border-radius: 3px;
+	}
 }
