@@ -1,0 +1,26 @@
+/* July 24, 2021 | Shadow Scientist (@shadow-scientist) */
+
+/* TODO personal branding should be visible on Desktop devices */
+@media not all and (max-width: 550px){
+	#profile-header{
+		box-shadow: 0 1vmax 2vmax 0 rgba(0, 0, 0, 0.4);
+	}
+
+	.profile-header-content{
+		padding: 33vh 10px 75px 10px;
+	}
+
+	#links-and-stats{
+		transform: translateY(-100%);
+		background: transparent;
+		z-index: 2;
+	}
+
+	#profile-image{
+		transform: translateX(-50%) translateY(50%) rotate(-2deg);
+		border: 0;
+		background: transparent;
+		border-radius: 50%;
+		box-shadow: 0 1vmax 1vmax 0vmax rgba(0, 0, 0, 0.4);
+	}
+}

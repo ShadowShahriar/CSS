@@ -1,0 +1,16 @@
+/* July 24, 2021 | Shadow Scientist (@shadow-scientist) */
+
+/* ISSUE the follow button is barely accessible due to its size */
+@media not all and (max-width: 550px){
+	.follow-user-button[data-size="mini"]{
+		font-size: 0.85rem;
+		font-weight: bold !important;
+		padding: 7px 11px;
+		border-radius: 3px;
+
+		/* HEADS UP! CSS preprocessor will remove CSS custom properties */
+		--button-padding-block: 7px;
+		--button-padding-inline: 11px;
+		--button-border-radius: 3px;
+	}
+}
