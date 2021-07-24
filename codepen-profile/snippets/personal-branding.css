@@ -52,6 +52,17 @@
 	#profile-username{
 		font-weight: bold;
 	}
+
+	/* TODO align the pen-as-header question with the current design */
+	.pen-as-header-question{
+		padding-bottom: 37px;
+		right: 1em;
+		font-weight: bold;
+	}
+
+	.pen-as-header-question > span{
+		font-weight: 400;
+	}
 }
 
 ::selection{
