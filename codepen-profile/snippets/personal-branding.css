@@ -1,4 +1,4 @@
-/* July 24, 2021 | Shadow Scientist (@shadow-scientist) */
+/* July 25, 2021 | Shadow Scientist (@shadow-scientist) */
 
 /* TODO personal branding should be visible on Desktop devices */
 @media not all and (max-width: 550px){
@@ -6,8 +6,21 @@
 		box-shadow: 0 1vmax 2vmax 0 rgba(0, 0, 0, 0.4);
 	}
 
+	#profile-header::after{
+		position: absolute;
+		left: 50%;
+		bottom: 0;
+		transform: translateX(-50%) scale(0.9);
+		width: 160px;
+		height: 80px;
+		background-color: #0c0d0f;
+		border-radius: 80px 80px 0 0;
+		transform-origin: 50% 100%;
+		display: block;
+	}
+
 	.profile-header-content{
-		padding: 33vh 10px 75px 10px;
+		padding: 33vh 10px 85px 10px;
 	}
 
 	#links-and-stats{
@@ -19,8 +32,29 @@
 	#profile-image{
 		transform: translateX(-50%) translateY(50%) rotate(-2deg);
 		border: 0;
-		background: transparent;
+		background: #0c0d0f;
 		border-radius: 50%;
 		box-shadow: 0 1vmax 1vmax 0vmax rgba(0, 0, 0, 0.4);
+
+	    /* customize alt text */
+		/* our alt text should stay at the center both vertically and horizontally */
+		font-family: Telefon, sans-serif;
+		line-height: 1.5;
+		text-align: center;
+		display: grid;
+		place-items: center;
+		place-content: center;
+    
+		/* AFAIK place-items and place-content would be stripped out by the prepocessor */
+		align-items: center;
 	}
+
+	#profile-username{
+		font-weight: bold;
+	}
+}
+
+::selection{
+	background-color: #181a1f;
+	color: #fff;
 }
