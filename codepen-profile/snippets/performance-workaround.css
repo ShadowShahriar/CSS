@@ -1,0 +1,46 @@
+/* July 23, 2021 | Shadow Scientist (@shadow-scientist) */
+
+/* TODO fix site lagging by hiding "pen iframes" */
+/* exclude #result-iframe */
+.profile-grid-pens .hide-owner:not(.featured-pen) .iframe-wrap > iframe{
+	display: none;
+}
+
+/* TODO tweak the border-radius to get rid of these "jagged edges" in Firefox */
+.iframe-wrap, .thumbnail-wrap{
+	background-color: transparent;
+	border-radius: 0;
+}
+
+.iframe-wrap .grid-preview-image, 
+.thumbnail-wrap .grid-preview-image,
+.profile-grid-pens .featured-pen .iframe-wrap{
+	border-radius: 6px;
+}
+
+[class^="ItemPreviewPopOutButton"]{
+	border-radius: 5px;
+}
+
+/* TODO add margin to the LR edges for mobile devices */
+#profile-location-and-bio{
+  margin: 0 1em;
+  font-weight: bold;
+}
+
+#profile-bio{
+  font-size: 1.1rem;
+  word-spacing: 0.12em;
+}
+
+/* TODO make the featured pen tile larger */
+.featured-pen .iframe-wrap{
+  padding-top: 50%;
+}
+
+/* TODO render better preview images in Chrome */
+@supports not (-moz-appearance: none){
+ .grid-preview-image{
+  image-rendering: pixelated;
+ } 
+}
