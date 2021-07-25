@@ -1,4 +1,4 @@
-/* July 25, 2021 | Shadow Scientist (@shadow-scientist) */
+/* July 26, 2021 | Shadow Scientist (@shadow-scientist) */
 
 /* TODO personal branding should be visible on Desktop devices */
 @media not all and (max-width: 550px){
@@ -53,6 +53,71 @@
 		font-weight: bold;
 	}
 
+	h1#profile-name-header > span{
+		font-family: "Telefon", sans-serif;
+		font-weight: 600;
+	}
+
+	.follow-block{
+		margin-right: 12px;
+	}
+
+	.follow-block > strong{
+		font-family: "Telefon", sans-serif;
+		font-weight: 400;
+		font-size: 1.5em;
+		padding: 0 0.05em;
+	}
+
+	.follow-block > span{
+		font-weight: bold;
+		transition: color ease 200ms;
+	}
+
+	#profile-links{
+		gap: 0;
+		grid-gap: 0;
+	}
+
+	.profile-links > a:not(.button){
+		position: relative;
+		color: transparent;
+		margin: 0 -5px;
+	}
+
+	.profile-links > a:not(.button):hover{
+		color: transparent;
+	}
+
+	.profile-links > a:not(.button)::after{
+		position: absolute;
+		left: 0;
+		top: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		color: #9b9dad;
+		font-weight: bold;
+		transition: color ease 200ms;
+	}
+
+	.profile-links > a:not(.button):hover:after{
+		color: #fff;
+	}
+
+	.profile-links > a:nth-child(1)::after{
+		content: "Twitter";
+	}
+
+	.profile-links > a:nth-child(2)::after{
+		content: "GitHub";
+	}
+
+	.profile-links > a:nth-child(3)::after{
+		content: "JSFiddle";
+	}
+
 	/* TODO align the pen-as-header question with the current design */
 	.pen-as-header-question{
 		padding-bottom: 37px;
@@ -68,4 +133,16 @@
 ::selection{
 	background-color: #181a1f;
 	color: #fff;
+}
+
+.hide-owner .grid-preview-image[alt=""]{
+	/* TODO remove the broken-image outline */
+	border: 2px solid transparent;
+
+	/* TODO add background fallback for broken-images */
+	background-color: #313540;
+	background-image: url("https://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png");
+	background-size: 30% auto;
+	background-position: 51% center;
+	background-repeat: no-repeat;
 }
