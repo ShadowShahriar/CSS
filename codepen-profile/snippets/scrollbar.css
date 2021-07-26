@@ -1,0 +1,49 @@
+/* July 26, 2021 | Shadow Scientist (@shadow-scientist) */
+
+/* TODO add a scrollbar supporting the site theme */
+/* +dimensions */
+html ::-webkit-scrollbar{
+	width: 16px;
+}
+
+html ::-webkit-scrollbar-thumb{
+	border-radius: 20px;
+	border: 4px solid rgba(0, 0, 0, 0);
+	background-clip: content-box;
+	height: 80px;
+}
+
+/* +colors */
+html ::-webkit-scrollbar-track{
+	background-color: rgba(0, 0, 0, 0);
+}
+
+html ::-webkit-scrollbar-thumb{
+    background-color: hsl(139deg, 59%, 55%);
+}
+
+/* +states */
+html ::-webkit-scrollbar-thumb:hover{
+    background-color: hsl(139deg, 59%, 65%);
+}
+
+html ::-webkit-scrollbar-thumb:active{
+    background-color: hsl(139deg, 59%, 25%);
+}
+
+html ::-webkit-scrollbar-thumb:window-inactive{
+	background-color: hsl(231deg, 13%, 29%);
+}
+
+html ::-webkit-scrollbar-thumb:hover:window-inactive{
+	background-color: hsl(231deg, 13%, 39%);
+}
+
+/* TODO match scrollbar's appearance with successive components */
+.drawer::-webkit-scrollbar-thumb{
+	background-color: hsl(227deg, 12%, 30%);
+}
+
+.drawer::-webkit-scrollbar-track{
+	background-color: rgba(0, 0, 0, 0);
+}
