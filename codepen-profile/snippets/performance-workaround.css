@@ -1,4 +1,4 @@
-/* July 23, 2021 | Shadow Scientist (@shadow-scientist) */
+/* July 26, 2021 | Shadow Scientist (@shadow-scientist) */
 
 /* TODO fix site lagging by hiding "pen iframes" */
 /* exclude #result-iframe */
@@ -24,23 +24,48 @@
 
 /* TODO add margin to the LR edges for mobile devices */
 #profile-location-and-bio{
-  margin: 0 1em;
-  font-weight: bold;
+	margin: 0 1em;
+	font-weight: bold;
 }
 
 #profile-bio{
-  font-size: 1.1rem;
-  word-spacing: 0.12em;
+	font-size: 1.1rem;
+	word-spacing: 0.12em;
 }
 
 /* TODO make the featured pen tile larger */
 .featured-pen .iframe-wrap{
-  padding-top: 50%;
+	padding-top: 50%;
 }
 
 /* TODO render better preview images in Chrome */
 @supports not (-moz-appearance: none){
- .grid-preview-image{
-  image-rendering: pixelated;
- } 
+	.grid-preview-image{
+		image-rendering: pixelated;
+	} 
+}
+
+/* TODO support the sidebar expand/collapse animation by applying the same animation in the body */
+body{
+	/* background-color: transparent; */
+	transition: padding-left cubic-bezier(0.38, 0.01, 0.09, 0.98) 0.4s;
+	will-change: padding-left;
+}
+
+/* TODO prevent sidebar and showcase overlap */
+@media (min-width: 831px){
+	body[data-sidebar-collapsed='true']{
+		padding-left: 11.5px;
+	}
+
+	/* TODO fix sidebar overflow and openbar hover animation */
+	[class^="Sidebar_root-2"]{
+		overflow-x: hidden;
+	}
+}
+
+/* TODO make the openbar animation consistent */
+[class^="SidebarToggle_openBar"]{
+	height: 110%;
+	box-shadow: 8px 0 10px 0 #000;
 }
