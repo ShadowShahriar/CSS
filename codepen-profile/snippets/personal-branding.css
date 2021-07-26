@@ -138,6 +138,50 @@
 		color: rgba(0, 0, 0, 0);
 		transition: color ease 400ms;
 	}
+
+	/* TODO make the first letter pop out! */
+	.profile-nav-1 .explore-tab::first-letter{
+		font-family: "Telefon", sans-serif;
+		font-size: 1.5em;
+		padding-right: 1px;
+	}
+	
+	/* TODO make the font bold and adjust their spacing */
+	.profile-nav-1 .explore-tab{
+		position: relative;
+		font-weight: bold;
+		padding-right: 0;
+		text-indent: 20px;
+		left: -20px;
+	}
+
+	/* TODO apply pen, project, and collection theme colors */
+	.profile-nav-1 .explore-tab.active:nth-child(1)::first-letter{
+		color: #0ebeff;
+	}
+	
+	.profile-nav-1 .explore-tab.active:nth-child(2)::first-letter{
+		color: #ffdd40;
+	}
+	
+	.profile-nav-1 .explore-tab.active:nth-child(3)::first-letter{
+		color: #ae63e4;
+	}
+
+	.profile-nav-1{
+		border-bottom: 0;
+	}
+	
+	.profile-nav-2{
+		background: #2c303a4a;
+		padding: 10px;
+		border-radius: 7px;
+	}
+	
+	.profile-nav-2 .explore-tab{
+		padding: 7px;
+		font-weight: bold;
+	}
 }
 
 ::selection{
