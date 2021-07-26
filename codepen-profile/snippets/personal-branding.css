@@ -56,6 +56,7 @@
 	h1#profile-name-header > span{
 		font-family: "Telefon", sans-serif;
 		font-weight: 600;
+		font-size: 3.4rem; /* TODO change it to an appropriate unit */
 	}
 
 	.follow-block{
@@ -145,4 +146,11 @@
 	background-size: 30% auto;
 	background-position: 51% center;
 	background-repeat: no-repeat;
+
+	/* TODO add some interpolation to the border color */
+	transition: border-color ease 400ms;
+}
+
+.hide-owner:hover .grid-preview-image[alt=""]{
+	border: 2px solid hsl(139deg, 59%, 55%);
 }
