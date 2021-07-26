@@ -129,6 +129,15 @@
 	.pen-as-header-question > span{
 		font-weight: 400;
 	}
+
+	/* TODO add 'Bangladesh' easter */
+	#profile-location:hover{
+		background-image: radial-gradient(circle at center, #ff3d3d 1.88ch, #47cf73 1px);
+		background-clip: text;
+		-webkit-background-clip: text;
+		color: rgba(0, 0, 0, 0);
+		transition: color ease 400ms;
+	}
 }
 
 ::selection{
