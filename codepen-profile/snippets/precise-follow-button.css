@@ -7,11 +7,23 @@
 		font-weight: bold !important;
 		padding: 7px 11px;
 		border-radius: 3px;
+		z-index: 10;
 
 		/* HEADS UP! CSS preprocessor will remove CSS custom properties */
 		--button-padding-block: 7px;
 		--button-padding-inline: 11px;
 		--button-border-radius: 3px;
+	}
+
+	.follow-user-button[data-size="mini"][data-following="false"]{
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+		transition: box-shadow ease-out 200ms;
+	}
+	
+	.follow-user-button[data-size="mini"][data-following="false"]:hover{
+		box-shadow: 0 0 3.2em 8px #47cf73;
+		background-color: #47cf73 !important;
+		color: black !important;
 	}
 
 	span[data-test-id="action-menu"][title="Actions"] > button[data-size="mini"]{
