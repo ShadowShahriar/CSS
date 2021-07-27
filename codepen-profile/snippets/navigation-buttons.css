@@ -1,29 +1,45 @@
 /* July 26, 2021 | Shadow Scientist (@shadow-scientist) */
 
-nav[class^="Pagination-module_pagination"]{
-	margin-bottom: 0 !important;
-}
+/* TODO should affect only Desktop devices */
+@media not all and (max-width: 550px){
+	nav[class^="Pagination-module_pagination"]{
+		margin-bottom: 0 !important;
+		margin-top: 0 !important;
+		position: relative;
+		z-index: 10;
+	}
 
-nav.center > .button-outline,
-nav[class^="Pagination-module"] > button{
-	color: #47cf73;
-	background-color: transparent;
-	border-color: currentColor;
-	font-family: "Telefon", sans-serif;
-	font-size: 1.3rem;
-	margin-top: 40px;
-	letter-spacing: 1px;
-	word-spacing: 5px;
-	box-shadow: inset 0 0 0.4em 0 currentColor, 0 0 0.4em 0 currentColor;
-	text-shadow: 0 0 0.3em currentColor;
-	transition: all ease 200ms;
-}
+	nav.center > .button-outline,
+	nav[class^="Pagination-module"] > button{
+		color: #47cf73;
+		background-color: transparent;
+		border-color: currentColor;
+		font-family: "Telefon", sans-serif;
+		font-size: 1.3rem;
+		margin-top: 40px;
+		letter-spacing: 1px;
+		word-spacing: 5px;
+		box-shadow: inset 0 0 0.4em 0 currentColor, 0 0 0.4em 0 currentColor;
+		text-shadow: 0 0 0.3em currentColor;
+		transition: all ease 200ms;
+	}
 
-nav.center > .button-outline:hover,
-nav[class^="Pagination-module"] > button:hover{
-	color: #000000db !important;
-	text-shadow: 0 0 0 rgba(0,0,0,0);
-	box-shadow: inset 0 0 0 0 #47cf73, 0 0 4em 0.3em #47cf73;
-	background-color: #47cf73 !important;
-	border-color: #47cf73;
+	nav.center > .button-outline:hover,
+	nav[class^="Pagination-module"] > button:hover{
+		color: #000000db !important;
+		text-shadow: 0 0 0 rgba(0,0,0,0);
+		box-shadow: inset 0 0 0 0 #47cf73, 0 0 4em 0.3em #47cf73;
+		background-color: #47cf73 !important;
+		border-color: #47cf73;
+	}
+
+	/* TODO tweak spacing issues */
+	div[data-component="PaginationContainer"],
+	nav.center{
+		padding-bottom: 80px;
+	}
+
+	.profile-grid-pens{
+		padding-bottom: 0;
+	}
 }
