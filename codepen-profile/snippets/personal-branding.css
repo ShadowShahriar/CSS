@@ -211,10 +211,12 @@
 	/* TODO highlight individual sets of tags */
 	.tag-grid > li > a[href*="css"]{
 		background-color: #0267af;
+		box-shadow: inset 14px 11px 19px 0 rgba(255, 255, 255, 0.2);
 	}
 
 	.tag-grid > li > a[href*="html"]{
 		background-color: #db3c15;
+		box-shadow: inset -14px -11px 19px 0 rgba(0, 0, 0, 0.2);
 	}
 
 	.tag-grid > li > a[href*="js"],
@@ -287,4 +289,18 @@
 
 .hide-owner:hover .grid-preview-image[alt=""]{
 	border: 2px solid hsl(139deg, 59%, 55%);
+}
+
+/* TODO highlight the featured pen wrapper */
+.hide-owner.featured-pen .iframe-wrap{
+	box-shadow: 0 0 0 2px hsl(139deg, 59%, 55%);
+}
+
+/* TODO remove border from the <img> as parent have already */
+.hide-owner.featured-pen .grid-preview-image[alt=""]{
+	border: 0;
+}
+
+#profile-header{
+	background-color: #151027;
 }
