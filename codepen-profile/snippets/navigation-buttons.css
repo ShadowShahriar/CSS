@@ -1,8 +1,9 @@
-/* July 26, 2021 | Shadow Scientist (@shadow-scientist) */
+/* July 29, 2021 | Shadow Scientist (@shadow-scientist) */
 
 /* TODO should affect only Desktop devices */
 @media not all and (max-width: 550px){
-	nav[class^="Pagination-module_pagination"]{
+	nav[class^="Pagination-module_pagination"],
+	nav[aria-label="Pagination"]{
 		margin-bottom: 0 !important;
 		margin-top: 0 !important;
 		position: relative;
@@ -10,7 +11,8 @@
 	}
 
 	nav.center > .button-outline,
-	nav[class^="Pagination-module"] > button{
+	nav[class^="Pagination-module"] > button,
+	nav[aria-label="Pagination"] > button{
 		color: #47cf73;
 		background-color: transparent;
 		border-color: currentColor;
@@ -25,7 +27,8 @@
 	}
 
 	nav.center > .button-outline:hover,
-	nav[class^="Pagination-module"] > button:hover{
+	nav[class^="Pagination-module"] > button:hover,
+	nav[aria-label="Pagination"] > button:hover{
 		color: #000000db !important;
 		text-shadow: 0 0 0 rgba(0,0,0,0);
 		box-shadow: inset 0 0 0 0 #47cf73, 0 0 4em 0.3em #47cf73;
