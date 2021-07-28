@@ -35,7 +35,7 @@
 
 /* TODO make the featured pen tile larger */
 .featured-pen .iframe-wrap{
-	padding-top: 50%;
+	padding-top: 40%; /* 50% maybe? */
 }
 
 /* TODO render better preview images in Chrome */
@@ -65,7 +65,8 @@ body{
 }
 
 /* TODO make the openbar animation consistent */
-[class^="SidebarToggle_openBar"]{
+[class^="SidebarToggle_openBar"], 
+button[title="Toggle Navigation"] + div[data-collapsed]{
 	height: 110%;
 	box-shadow: 8px 0 10px 0 #000;
 }
