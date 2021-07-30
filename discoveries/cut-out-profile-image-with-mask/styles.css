@@ -1,5 +1,5 @@
 /* relevant portion */
-section{
+figure{
 	position: relative;
 	--circle-size: 12vmin;
 	--circle-offset: 0px;
@@ -7,7 +7,8 @@ section{
 }
 
 img{
-	width: 43vmin;
+	width: 44vmin;
+	height: 44vmin;
 	display: block;
 	border-radius: 50%;
 	padding: 1px;
@@ -15,7 +16,7 @@ img{
 	/* storing repeating portions as variables */
 	--mask: 
 		linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), 
-		radial-gradient(50% 50%, rgb(255, 255, 255) 98%, transparent 100%);
+		radial-gradient(50% 50%, rgb(255, 255, 255) 97%, transparent 100%);
 	--mask-size: 100% 100%, var(--circle-size) var(--circle-size);
   
 	mask-image: var(--mask);
@@ -31,7 +32,7 @@ img{
 	-webkit-mask-composite: source-out;
 }
 
-section::after{
+figure::after{
 	content: "";
 	position: absolute;
 	left: var(--circle-offset);
